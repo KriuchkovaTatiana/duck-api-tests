@@ -29,7 +29,7 @@ public class StartTestsForWorkWithDucks extends TestNGCitrusSupport {
                         "}"));
     }
 
-    // хелперы для тестов
+    //хелперы для тестов
 
     //метод для извелечения переменной ID
     protected void duckId(TestCaseRunner runner) {

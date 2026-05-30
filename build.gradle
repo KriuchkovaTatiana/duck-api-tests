@@ -16,10 +16,7 @@ dependencies {
     testImplementation group: 'com.consol.citrus', name: 'citrus-http', version: '3.4.0'
     testImplementation group: 'com.consol.citrus', name: 'citrus-validation-json', version: '3.4.0'
 
-    testImplementation group: 'org.slf4j', name: 'slf4j-reload4j', version: '2.0.7'
-
-    testImplementation group: 'com.h2database', name: 'h2', version: '2.2.224'
-    testImplementation group: 'org.springframework', name: 'spring-jdbc', version: '5.3.39'
+    testImplementation group: 'org.slf4j', name: 'slf4j-reload4j', version:'2.0.7'
 
     testCompileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
     testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
