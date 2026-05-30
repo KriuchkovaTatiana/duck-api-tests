@@ -1,0 +1,32 @@
+package autotests;
+
+import com.consol.citrus.annotations.CitrusResource;
+import com.consol.citrus.annotations.CitrusTest;
+import com.consol.citrus.TestCaseRunner;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Test;
+import org.springframework.http.HttpStatus;
+
+//перед началом работы с тестом необходимо создать уточек (через БД или Swagger):
+/*через БД:
+insert into DUCK values
+(1, 'yellow', 10, 'plastic', 'quack', 'ACTIVE'),
+(2, 'yellow', 10, 'wood', 'quack', 'FIXED');
+обновлять создание после прохождений тестов*/
+
+public class TestDuckQuack extends StartTestsForWorkWithDucks {
+
+    @Test(description = "Кряканье уточки: корректный нечётный id, корректный звук")
+    @CitrusTest
+    public void quackRightSoundWithOddID(@Optional @CitrusResource TestCaseRunner runner) {
+        duckQuack(runner, "1", "1", "1");
+        validateResponse(runner, HttpStatus.OK, "{\"sound\": \"quack\"}");
+    }
+
+    @Test(description = "Кряканье уточки: корректный чётный id, корректный звук")
+    @CitrusTest
+    public void quackRightSoundWithEvenID(@Optional @CitrusResource TestCaseRunner runner) {
+        duckQuack(runner, "2", "1", "1");
+        validateResponse(runner, HttpStatus.OK, "{\"sound\": \"moo\"}");
+    }
+}
