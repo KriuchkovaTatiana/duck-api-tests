@@ -21,7 +21,7 @@ public class TestDuckProperties extends StartTestsForWorkWithDucks {
     public void getPropertiesFromDuckWithEvenIDAndWoodMaterial(@Optional @CitrusResource TestCaseRunner runner) {
         duckProperties(runner, "2");
         validateResponse(runner, HttpStatus.OK,
-                "{}");
+                "{}"); //ожидается получение свойств уточки, но приходит пустой результат
     }
 
     @Test(description = "Получение свойств уточки с нечетным ID и material = rubber")
@@ -30,6 +30,6 @@ public class TestDuckProperties extends StartTestsForWorkWithDucks {
         duckProperties(runner, "1");
         validateResponse(runner, HttpStatus.OK,
                 "{\"color\": \"yellow\", \"height\": 1000.0, \"material\": \"rubber\", " +
-                        "\"sound\": \"quack\", \"wingsState\":\"ACTIVE\"}"); //почему "height": 1000.0 так и не поняла, в базе 10.0, а сваггер видит 1000.0
+                        "\"sound\": \"quack\", \"wingsState\":\"ACTIVE\"}"); //"height": 1000.0 - в базе 10.0, из АПИ приходит 1000.0
     }
 }

@@ -27,6 +27,6 @@ public class TestDuckQuack extends StartTestsForWorkWithDucks {
     @CitrusTest
     public void quackRightSoundWithEvenID(@Optional @CitrusResource TestCaseRunner runner) {
         duckQuack(runner, "2", "1", "1");
-        validateResponse(runner, HttpStatus.OK, "{\"sound\": \"moo\"}");
+        validateResponse(runner, HttpStatus.OK, "{\"sound\": \"moo\"}"); //ожидается звук quack, но приходит результат moo
     }
 }

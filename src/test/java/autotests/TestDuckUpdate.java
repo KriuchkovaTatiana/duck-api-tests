@@ -17,6 +17,8 @@ public class TestDuckUpdate extends StartTestsForWorkWithDucks {
         duckUpdate(runner, "red", "1.0", "${duckId}", "rubber", "quack");
         validateResponse(runner, HttpStatus.OK,
                 "{\"message\": \"Duck with id = ${duckId} is updated\"}");
+        duckDelete(runner, "${duckId}");
+        validateResponse(runner, HttpStatus.OK, "{\"message\": \"Duck is deleted\"}");
     }
 
     @Test(description = "Изменение цвета и звука уточки")
@@ -27,5 +29,7 @@ public class TestDuckUpdate extends StartTestsForWorkWithDucks {
         duckUpdate(runner, "blue", "10.0", "${duckId}", "rubber", "quack-quack");
         validateResponse(runner, HttpStatus.OK,
                 "{\"message\": \"Duck with id = ${duckId} is updated\"}");
+        duckDelete(runner, "${duckId}");
+        validateResponse(runner, HttpStatus.OK, "{\"message\": \"Duck is deleted\"}");
     }
 }
