@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import org.springframework.http.HttpStatus;
 import autotests.clients.DuckActionClients;
 
-public class TestDuckFly extends DuckActionClients {
+public class FlyDuckTest extends DuckActionClients {
 
     @Test(description = "Полет уточки: существующий id с активными крыльями")
     @CitrusTest

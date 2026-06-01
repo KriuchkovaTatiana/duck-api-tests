@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import org.springframework.http.HttpStatus;
 import autotests.clients.DuckActionClients;
 
-public class TestDuckSwim extends DuckActionClients {
+public class SwimDuckTest extends DuckActionClients {
 
     @Test(description = "Плавание уточки: существующий id")
     @CitrusTest

@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import org.springframework.http.HttpStatus;
 import autotests.clients.DuckActionClients;
 
-public class TestDuckDelete extends DuckActionClients {
+public class DeleteDuckTest extends DuckActionClients {
 
     @Test(description = "Удаление уточки")
     @CitrusTest

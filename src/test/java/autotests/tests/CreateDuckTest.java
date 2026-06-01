@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import autotests.clients.DuckActionClients;
 
 
-public class TestDuckCreate extends DuckActionClients {
+public class CreateDuckTest extends DuckActionClients {
 
     @Test(description = "Создание уточки с material = rubber")
     @CitrusTest

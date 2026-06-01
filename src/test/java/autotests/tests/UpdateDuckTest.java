@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import org.springframework.http.HttpStatus;
 import autotests.clients.DuckActionClients;
 
-public class TestDuckUpdate extends DuckActionClients {
+public class UpdateDuckTest extends DuckActionClients {
 
     @Test(description = "Изменение цвета и высоты уточки")
     @CitrusTest

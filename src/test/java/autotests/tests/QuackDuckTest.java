@@ -15,7 +15,7 @@ insert into DUCK values
 (2, 'yellow', 10, 'wood', 'quack', 'FIXED');
 обновлять создание после прохождений тестов*/
 
-public class TestDuckQuack extends DuckActionClients {
+public class QuackDuckTest extends DuckActionClients {
 
     @Test(description = "Кряканье уточки: корректный нечётный id, корректный звук")
     @CitrusTest

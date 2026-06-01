@@ -15,7 +15,7 @@ insert into DUCK values
 (2, 'yellow', 10, 'wood', 'quack', 'FIXED');
 обновлять создание после прохождений тестов*/
 
-public class TestDuckProperties extends DuckActionClients {
+public class PropertiesDuckTest extends DuckActionClients {
 
     @Test(description = "Получение свойств уточки с четным числом и material = wood")
     @CitrusTest
