@@ -1,4 +1,4 @@
-package autotests;
+package autotests.tests;
 
 import com.consol.citrus.annotations.CitrusResource;
 import com.consol.citrus.annotations.CitrusTest;
@@ -6,8 +6,9 @@ import com.consol.citrus.TestCaseRunner;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Test;
 import org.springframework.http.HttpStatus;
+import autotests.clients.DuckActionClients;
 
-public class TestDuckDelete extends StartTestsForWorkWithDucks {
+public class TestDuckDelete extends DuckActionClients {
 
     @Test(description = "Удаление уточки")
     @CitrusTest

@@ -1,21 +1,26 @@
-package autotests;
+package autotests.clients;
 
 import com.consol.citrus.TestCaseRunner;
-import com.consol.citrus.testng.TestNGCitrusSupport;
+import com.consol.citrus.http.client.HttpClient;
+import com.consol.citrus.testng.spring.TestNGCitrusSpringSupport;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
+import autotests.EndpointConfig;
 
 import static com.consol.citrus.http.actions.HttpActionBuilder.http;
 import static com.consol.citrus.validation.DelegatingPayloadVariableExtractor.Builder.fromBody;
 
-public class StartTestsForWorkWithDucks extends TestNGCitrusSupport {
+@ContextConfiguration(classes = {EndpointConfig.class})
+public class DuckActionClients extends TestNGCitrusSpringSupport {
 
-    private static final String URL = "http://localhost:2222";
-
-    protected void createDuck(TestCaseRunner runner, String color, double height,
+    @Autowired
+    protected HttpClient duckService;
+    public void createDuck(TestCaseRunner runner, String color, double height,
                               String material, String sound, String wingsState) {
         runner.$(http()
-                .client(URL)
+                .client(duckService)
                 .send()
                 .post("/api/duck/create")
                 .message()
@@ -32,35 +37,35 @@ public class StartTestsForWorkWithDucks extends TestNGCitrusSupport {
     //хелперы для тестов
 
     //метод для извелечения переменной ID
-    protected void duckId(TestCaseRunner runner) {
+    public void duckId(TestCaseRunner runner) {
         runner.$(http()
-                .client(URL)
+                .client(duckService)
                 .receive()
                 .response(HttpStatus.OK)
                 .message()
                 .extract(fromBody().expression("$.id", "duckId").build()));
     }
 
-    protected void duckSwim(TestCaseRunner runner, String id) {
+    public void duckSwim(TestCaseRunner runner, String id) {
         runner.$(http()
-                .client(URL)
+                .client(duckService)
                 .send()
                 .get("/api/duck/action/swim")
                 .queryParam("id", id));
     }
 
-    protected void duckFly(TestCaseRunner runner, String id) {
+    public void duckFly(TestCaseRunner runner, String id) {
         runner.$(http()
-                .client(URL)
+                .client(duckService)
                 .send()
                 .get("/api/duck/action/fly")
                 .queryParam("id", id));
     }
 
-    protected void duckUpdate(TestCaseRunner runner, String color, String height,
+    public void duckUpdate(TestCaseRunner runner, String color, String height,
                               String id, String material, String sound) {
         runner.$(http()
-                .client(URL)
+                .client(duckService)
                 .send()
                 .put("/api/duck/update")
                 .queryParam("color", color)
@@ -70,26 +75,26 @@ public class StartTestsForWorkWithDucks extends TestNGCitrusSupport {
                 .queryParam("sound", sound));
     }
 
-    protected void duckDelete(TestCaseRunner runner, String id) {
+    public void duckDelete(TestCaseRunner runner, String id) {
         runner.$(http()
-                .client(URL)
+                .client(duckService)
                 .send()
                 .delete("/api/duck/delete")
                 .queryParam("id", id));
     }
 
-    protected void duckProperties(TestCaseRunner runner, String id) {
+    public void duckProperties(TestCaseRunner runner, String id) {
         runner.$(http()
-                .client(URL)
+                .client(duckService)
                 .send()
                 .get("/api/duck/action/properties")
                 .queryParam("id", id));
     }
 
-    protected void duckQuack(TestCaseRunner runner, String id,
+    public void duckQuack(TestCaseRunner runner, String id,
                              String repetitionCount, String soundCount) {
         runner.$(http()
-                .client(URL)
+                .client(duckService)
                 .send()
                 .get("/api/duck/action/quack")
                 .queryParam("id", id)
@@ -97,9 +102,9 @@ public class StartTestsForWorkWithDucks extends TestNGCitrusSupport {
                 .queryParam("soundCount", soundCount));
     }
 
-    protected void validateResponse(TestCaseRunner runner, HttpStatus status, String body) {
+    public void validateResponse(TestCaseRunner runner, HttpStatus status, String body) {
         runner.$(http()
-                .client(URL)
+                .client(duckService)
                 .receive()
                 .response(status)
                 .message()
