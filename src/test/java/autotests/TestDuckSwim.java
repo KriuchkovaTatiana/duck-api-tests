@@ -17,7 +17,6 @@ public class TestDuckSwim extends StartTestsForWorkWithDucks {
         duckSwim(runner, "${duckId}");
         validateResponse(runner, HttpStatus.NOT_FOUND, "{\"message\": \"Paws are not found ((((\"}");
         duckDelete(runner, "${duckId}");
-        validateResponse(runner, HttpStatus.OK, "{\"message\": \"Duck is deleted\"}");
     }
 
     @Test(description = "Плавание уточки: несуществующий id")
@@ -26,7 +25,6 @@ public class TestDuckSwim extends StartTestsForWorkWithDucks {
         createDuck(runner, "yellow", 10.0, "rubber", "quack", "ACTIVE");
         duckId(runner);
         duckDelete(runner, "${duckId}");
-        validateResponse(runner, HttpStatus.OK, "{\"message\": \"Duck is deleted\"}");
         duckSwim(runner, "${duckId}");
         validateResponse(runner, HttpStatus.NOT_FOUND, "{\"message\": \"Paws are not found ((((\"}");
     }

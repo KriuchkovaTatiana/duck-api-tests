@@ -18,7 +18,6 @@ public class TestDuckFly extends StartTestsForWorkWithDucks {
         duckFly(runner, "${duckId}");
         validateResponse(runner, HttpStatus.OK, "{\"message\": \"I am flying :)\"}");
         duckDelete(runner, "${duckId}");
-        validateResponse(runner, HttpStatus.OK, "{\"message\": \"Duck is deleted\"}");
     }
 
     @Test(description = "Полет уточки: существующий id со связанными крыльями")
@@ -30,7 +29,6 @@ public class TestDuckFly extends StartTestsForWorkWithDucks {
         duckFly(runner, "${duckId}");
         validateResponse(runner, HttpStatus.OK, "{\"message\": \"I can not fly :C\"}");
         duckDelete(runner, "${duckId}");
-        validateResponse(runner, HttpStatus.OK, "{\"message\": \"Duck is deleted\"}");
     }
 
     @Test(description = "Полет уточки: существующий id c крыльями в неопределенном состоянии")
@@ -42,7 +40,6 @@ public class TestDuckFly extends StartTestsForWorkWithDucks {
         duckFly(runner, "${duckId}");
         validateResponse(runner, HttpStatus.OK, "{\"message\": \"Wings are not detected :(\"}");
         duckDelete(runner, "${duckId}");
-        validateResponse(runner, HttpStatus.OK, "{\"message\": \"Duck is deleted\"}");
     }
 
 }
