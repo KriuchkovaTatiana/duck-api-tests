@@ -1,4 +1,4 @@
-package autotests;
+package autotests.tests.duckActionControllerTests;
 
 import com.consol.citrus.annotations.CitrusResource;
 import com.consol.citrus.annotations.CitrusTest;
@@ -6,6 +6,7 @@ import com.consol.citrus.TestCaseRunner;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Test;
 import org.springframework.http.HttpStatus;
+import autotests.clients.PropertiesDuckClient;
 
 //перед началом работы с тестом необходимо создать уточек (через БД или Swagger):
 /*пример через БД:
@@ -14,7 +15,7 @@ insert into DUCK values
 (2, 'yellow', 10, 'wood', 'quack', 'FIXED');
 обновлять создание после прохождений тестов*/
 
-public class TestDuckProperties extends StartTestsForWorkWithDucks {
+public class PropertiesDuckTest extends PropertiesDuckClient {
 
     @Test(description = "Получение свойств уточки с четным числом и material = wood")
     @CitrusTest
