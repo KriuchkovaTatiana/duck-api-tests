@@ -1,11 +1,13 @@
 package autotests.clients;
 
 import com.consol.citrus.TestCaseRunner;
+import io.qameta.allure.Step;
 
 import static com.consol.citrus.http.actions.HttpActionBuilder.http;
 
 public class FlyDuckClient extends DuckClient {
 
+    @Step("Отправляем уточку в полёт")
     public void duckFly(TestCaseRunner runner, String id) {
         runner.$(http()
                 .client(duckService)
