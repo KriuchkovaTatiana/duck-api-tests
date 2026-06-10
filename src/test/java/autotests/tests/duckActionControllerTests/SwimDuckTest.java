@@ -7,25 +7,30 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Test;
 import org.springframework.http.HttpStatus;
 import autotests.clients.SwimDuckClient;
+import autotests.payloads.PostApiDuckCreate;
 
 public class SwimDuckTest extends SwimDuckClient {
 
     @Test(description = "Плавание уточки: существующий id")
     @CitrusTest
     public void swimRealId(@Optional @CitrusResource TestCaseRunner runner) {
-        createDuck(runner, "yellow", 10.0, "rubber", "quack", "ACTIVE");
+        createDuck(runner, new PostApiDuckCreate().color("yellow").height(10.0).material("rubber")
+                .sound("quack").wingsState("ACTIVE"));
         duckId(runner);
         duckSwim(runner, "${duckId}");
-        validateResponse(runner, HttpStatus.NOT_FOUND, "{\"message\": \"Paws are not found ((((\"}");
+        validateResponseFromResources(runner, HttpStatus.NOT_FOUND,
+                "responses/swimWhenPawsNotFound.json");
         duckDelete(runner, "${duckId}");
     }
 
     @Test(description = "Плавание уточки: несуществующий id")
     @CitrusTest
     public void swimNotRealId(@Optional @CitrusResource TestCaseRunner runner) {
-        createDuck(runner, "yellow", 10.0, "rubber", "quack", "ACTIVE");
+        createDuck(runner, new PostApiDuckCreate().color("yellow").height(10.0).material("rubber")
+                .sound("quack").wingsState("ACTIVE"));
         duckId(runner);
         duckDelete(runner, "${duckId}");
+        validateResponseFromResources(runner, HttpStatus.OK, "responses/deleteDuck.json");
         duckSwim(runner, "${duckId}");
         validateResponse(runner, HttpStatus.NOT_FOUND, "{\"message\": \"Paws are not found ((((\"}");
     }

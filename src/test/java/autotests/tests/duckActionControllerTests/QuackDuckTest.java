@@ -7,6 +7,7 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Test;
 import org.springframework.http.HttpStatus;
 import autotests.clients.QuackDuckClient;
+import autotests.payloads.QuackDuckResponse;
 
 //перед началом работы с тестом необходимо создать уточек (через БД или Swagger):
 /*через БД:
@@ -21,7 +22,8 @@ public class QuackDuckTest extends QuackDuckClient {
     @CitrusTest
     public void quackRightSoundWithOddID(@Optional @CitrusResource TestCaseRunner runner) {
         duckQuack(runner, "1", "1", "1");
-        validateResponse(runner, HttpStatus.OK, "{\"sound\": \"quack\"}");
+        validateResponseFromPayload(runner, HttpStatus.OK,
+                new QuackDuckResponse().sound("quack"));
     }
 
     @Test(description = "Кряканье уточки: корректный чётный id, корректный звук")
