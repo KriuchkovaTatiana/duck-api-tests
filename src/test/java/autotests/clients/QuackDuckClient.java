@@ -1,12 +1,13 @@
 package autotests.clients;
 
-import autotests.StartTestsForWorkWithDucks;
 import com.consol.citrus.TestCaseRunner;
+import io.qameta.allure.Step;
 
 import static com.consol.citrus.http.actions.HttpActionBuilder.http;
 
-public class QuackDuckClient extends StartTestsForWorkWithDucks {
+public class QuackDuckClient extends DuckClient {
 
+    @Step("Просим уточку покрякать")
     public void duckQuack(TestCaseRunner runner, String id,
                           String repetitionCount, String soundCount) {
         runner.$(http()
