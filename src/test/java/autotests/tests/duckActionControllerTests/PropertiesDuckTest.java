@@ -33,7 +33,7 @@ public class PropertiesDuckTest extends PropertiesDuckClient {
         createDuck(runner, "1", "yellow", "10", "rubber", "quack", "ACTIVE");
         duckProperties(runner, "1");
         validateResponseFromPayload(runner, HttpStatus.OK,
-                new DuckPropertiesResponse().color("yellow").height(1000.0)
+                new DuckPropertiesResponse().color("yellow").height(10.0)
                         .material("rubber").sound("quack").wingsState("ACTIVE"));
         deleteDuckFromDatabase(runner, "1");
     }

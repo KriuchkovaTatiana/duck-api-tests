@@ -8,5 +8,5 @@ import lombok.experimental.Accessors;
 @Accessors(fluent = true)
 public class QuackDuckResponse {
     @JsonProperty
-    private String sound;
+    private String duckSpeech;
 }

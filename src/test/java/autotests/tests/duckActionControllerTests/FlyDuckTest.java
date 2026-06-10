@@ -33,7 +33,7 @@ public class FlyDuckTest extends FlyDuckClient {
         createDuck(runner, "2", "yellow", "10", "rubber", "quack", "FIXED");
         duckFly(runner, "2");
         validateResponseFromPayload(runner, HttpStatus.OK,
-                new MessageAboutDuckResponse().message("I can not fly :C"));
+                new MessageAboutDuckResponse().message("I can't fly"));
         deleteDuckFromDatabase(runner, "2");
     }
 
@@ -42,7 +42,7 @@ public class FlyDuckTest extends FlyDuckClient {
     public void flyWithUndefinedWings(@Optional @CitrusResource TestCaseRunner runner) {
         createDuck(runner, "3", "yellow", "10", "rubber", "quack", "UNDEFINED");
         duckFly(runner, "3");
-        validateResponse(runner, HttpStatus.OK, "{\"message\": \"Wings are not detected :(\"}");
+        validateResponse(runner, HttpStatus.OK, "{\"message\": \"Wings are not detected\"}");
         deleteDuckFromDatabase(runner, "3");
     }
 

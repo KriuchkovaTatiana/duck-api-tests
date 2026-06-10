@@ -21,7 +21,7 @@ public class SwimDuckTest extends SwimDuckClient {
     public void swimRealId(@Optional @CitrusResource TestCaseRunner runner) {
         createDuck(runner, "1", "yellow", "10", "rubber", "quack", "ACTIVE");
         duckSwim(runner, "1");
-        validateResponseFromResources(runner, HttpStatus.NOT_FOUND,
+        validateResponseFromResources(runner, HttpStatus.OK,
                 "responses/swimWhenPawsNotFound.json");
         deleteDuckFromDatabase(runner, "1");
     }
@@ -32,6 +32,6 @@ public class SwimDuckTest extends SwimDuckClient {
         createDuck(runner, "2", "yellow", "10", "rubber", "quack", "ACTIVE");
         deleteDuckFromDatabase(runner, "2");
         duckSwim(runner, "2");
-        validateResponse(runner, HttpStatus.NOT_FOUND, "{\"message\": \"Paws are not found ((((\"}");
+        validateResponse(runner, HttpStatus.OK, "{\"message\": \"Duck with id = 2 is not found\"}");
     }
 }

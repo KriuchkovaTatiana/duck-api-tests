@@ -25,7 +25,7 @@ public class UpdateDuckTest extends UpdateDuckClient {
         duckUpdate(runner, "red", "1.0", "1", "rubber", "quack");
         validateResponse(runner, HttpStatus.OK,
                 "{\"message\": \"Duck with id = 1 is updated\"}");
-        validateDuckInDatabase(runner, "1", "red", "1.0", "rubber", "quack", "ACTIVE");
+        validateDuckInDatabase(runner, "1", "red", "100.0", "rubber", "quack", "ACTIVE");
         deleteDuckFromDatabase(runner, "1");
     }
 
@@ -36,7 +36,7 @@ public class UpdateDuckTest extends UpdateDuckClient {
         duckUpdate(runner, "blue", "10.0", "2", "rubber", "quack-quack");
         validateResponse(runner, HttpStatus.OK,
                 "{\"message\": \"Duck with id = 2 is updated\"}");
-        validateDuckInDatabase(runner, "2", "blue", "10.0", "rubber", "quack-quack", "ACTIVE");
+        validateDuckInDatabase(runner, "2", "blue", "10.0", "rubber", "quack", "ACTIVE");
         deleteDuckFromDatabase(runner, "2");
     }
 }

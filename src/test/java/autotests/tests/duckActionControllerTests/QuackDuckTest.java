@@ -23,7 +23,7 @@ public class QuackDuckTest extends QuackDuckClient {
         createDuck(runner, "1", "yellow", "10", "plastic", "quack", "ACTIVE");
         duckQuack(runner, "1", "1", "1");
         validateResponseFromPayload(runner, HttpStatus.OK,
-                new QuackDuckResponse().sound("quack"));
+                new QuackDuckResponse().duckSpeech("quack"));
         deleteDuckFromDatabase(runner, "1");
     }
 
@@ -32,7 +32,7 @@ public class QuackDuckTest extends QuackDuckClient {
     public void quackRightSoundWithEvenID(@Optional @CitrusResource TestCaseRunner runner) {
         createDuck(runner, "2", "yellow", "10", "wood", "quack", "FIXED");
         duckQuack(runner, "2", "1", "1");
-        validateResponse(runner, HttpStatus.OK, "{\"sound\": \"moo\"}"); //ожидается звук quack, но приходит результат moo
+        validateResponse(runner, HttpStatus.OK, "{\"duckSpeech\": \"quack\"}"); //ожидается звук quack, но приходит результат moo
         deleteDuckFromDatabase(runner, "2");
     }
 }
