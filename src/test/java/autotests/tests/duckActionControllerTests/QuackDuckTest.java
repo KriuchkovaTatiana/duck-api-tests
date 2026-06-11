@@ -32,7 +32,7 @@ public class QuackDuckTest extends QuackDuckClient {
     public void quackRightSoundWithEvenID(@Optional @CitrusResource TestCaseRunner runner) {
         createDuck(runner, "2", "yellow", "10", "wood", "quack", "FIXED");
         duckQuack(runner, "2", "1", "1");
-        validateResponse(runner, HttpStatus.OK, "{\"duckSpeech\": \"quack\"}"); //ожидается звук quack, но приходит результат moo
+        validateResponse(runner, HttpStatus.OK, "{\"duckSpeech\": \"quack\"}");
         deleteDuckFromDatabase(runner, "2");
     }
 }
